@@ -18,7 +18,7 @@ export const ImageFinder = () => {
     const [query, setQuery] = useState('')
     const [modalVisible, setModalVisible] = useState(false)
     const [modalSrc, setModalSrc] = useState('')
-    const { isFirstQuery, setFirstQueryStatus, isButtonShow, setIsButtonShow } = useFirstQuery()
+    const {isButtonShow, setIsButtonShow } = useFirstQuery()
 
     const search = async (query) => {
         setQuery(query)
@@ -46,7 +46,10 @@ export const ImageFinder = () => {
                 }
             }
         }
-        isFirstQuery === true ? setFirstQueryStatus() : fetchImages()
+        //isFirstQuery === true ? setIsFirstQuery(false) : fetchImages()
+        if (page !== 0) {
+           fetchImages() 
+        }
     }, [page, query])
 
     const onBackdropExit = (event) => {

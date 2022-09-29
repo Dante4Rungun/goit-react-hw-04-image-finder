@@ -5,15 +5,10 @@ const FirstQueryContext = createContext()
 export const useFirstQuery = () => useContext(FirstQueryContext)
 
 export const FirstQueryProvider = ({children}) => {
-    const [isFirstQuery, setIsFirstQuery] = useState(true)
     const [isButtonShow, setIsButtonShow] = useState(false)
 
-    const setFirstQueryStatus = () => {
-        setIsFirstQuery(false)
-    }
-
     return (
-        <FirstQueryContext.Provider value={{ isFirstQuery, setFirstQueryStatus, isButtonShow, setIsButtonShow }}>
+        <FirstQueryContext.Provider value={{ isButtonShow, setIsButtonShow }}>
             { children }
         </FirstQueryContext.Provider>
     )
